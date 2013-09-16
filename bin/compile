@@ -10,6 +10,8 @@ mkdir -p "$1" "$2"
 BUILD_DIR=$(cd "$1/" && pwd)
 CACHE_DIR=$(cd "$2/" && pwd)
 
+cp dart.zip $CACHE_DIR
+
 # the directory in which the packages will be stored
 PACKAGES_DIR="tmp/repo.git/.cache"
 
@@ -41,7 +43,8 @@ mkdir -p $PACKAGES_DIR
 message "-----> Installing Dart VM, build: $BUILD"
 
 cd $CACHE_DIR
-curl -L $DART_SDK_URL -s -o - | tar xzf -
+#curl -L $DART_SDK_URL -s -o - | tar xzf -
+unzip dart.zip
 
 
 message "-----> Copy Dart binaries to app root"
