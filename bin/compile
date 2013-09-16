@@ -44,8 +44,8 @@ message "-----> Installing Dart VM, build: $BUILD"
 
 cd $CACHE_DIR
 #curl -L $DART_SDK_URL -s -o - | tar xzf -
-curl -L https://github.com/selkhateeb/heroku-buildpack-dart/raw/master/bin/dart.zip -s -o dart.zip
-unzip dart.zip
+curl -L https://github.com/selkhateeb/heroku-buildpack-dart/raw/master/dart.tar -s -o - | tar xf -
+
 
 
 message "-----> Copy Dart binaries to app root"
