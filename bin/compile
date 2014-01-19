@@ -87,8 +87,13 @@ for filename in `find . -name pubspec.yaml | grep -v dart-sdk | grep -v pub-cach
 
     if [[ -z "$DART_BUILD_CMD" ]]
     then
-        message 'Building with "pub build"'
-        /app/dart-sdk/bin/pub build
+        message 'Checking for "web" directory...'
+        if [ -e "$BUILD_DIR/$pub_dir/web" ]; then
+            message 'Building with "pub build"'
+            /app/dart-sdk/bin/pub build --mode=debug
+        else
+            message 'No "web" directory. Skipping "pub build"'
+        fi
     else
         message "Building with \"$DART_BUILD_CMD\""
         eval $DART_BUILD_CMD
